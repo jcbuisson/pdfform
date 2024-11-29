@@ -9,8 +9,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.post('/api', async function (req, res) {
-   console.log("APIAPIAPI", req.body)
-
    try {
       // Load the PDF form
       const pdfBytes = await fs.readFile('./contrat-jcb.pdf')
