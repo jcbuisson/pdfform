@@ -1,5 +1,6 @@
 import express from 'express'
 import fs from 'fs/promises'
+import { format } from 'date-fns'
 import { PDFDocument } from 'pdf-lib'
 
 const app = express()
@@ -12,18 +13,39 @@ app.post('/api', async function (req, res) {
 
    try {
       // Load the PDF form
-      const pdfBytes = await fs.readFile('./contrat-1.pdf')
+      const pdfBytes = await fs.readFile('./contrat-jcb.pdf')
       const pdfDoc = await PDFDocument.load(pdfBytes)
 
       // Get the form object
       const form = pdfDoc.getForm()
 
       // Fill the form fields
-      const clientField = form.getTextField('client')
-      clientField.setText(req.body.client)
+      const clientTextBox = form.getTextField('clientTextBox')
+      clientTextBox.setText(req.body.clientText)
+      const clientTextBox2 = form.getTextField('clientTextBox2')
+      clientTextBox2.setText(req.body.clientText)
 
-      const filerefField = form.getTextField('fileref')
-      filerefField.setText(req.body.fileref)
+      const refTextBox = form.getTextField('refTextBox')
+      refTextBox.setText(req.body.refText)
+      const refTextBox2 = form.getTextField('refTextBox2')
+      refTextBox2.setText(req.body.refText)
+
+      const addressTextBox = form.getTextField('addressTextBox')
+      addressTextBox.setText(req.body.addressText)
+
+      const postalCodeTextBox = form.getTextField('postalCodeTextBox')
+      postalCodeTextBox.setText(req.body.postalCodeText)
+
+      const cityTextBox = form.getTextField('cityTextBox')
+      cityTextBox.setText(req.body.cityText)
+      const cityTextBox2 = form.getTextField('cityTextBox2')
+      cityTextBox2.setText(req.body.cityText)
+
+      const emailTextBox = form.getTextField('emailTextBox')
+      emailTextBox.setText(req.body.emailText)
+
+      const dateTextBox = form.getTextField('dateTextBox')
+      dateTextBox.setText(format(new Date(), 'dd/MM/yyyy'))
 
       // const checkbox = form.getCheckBox('Subscribe')
       // checkbox.check();
