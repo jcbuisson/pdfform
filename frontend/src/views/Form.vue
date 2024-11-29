@@ -19,7 +19,7 @@
             <input type="text" id="address" name="address" :value="data.address" class="mt-1 px-4 py-2 rounded-lg border focus:outline-none focus:border-blue-400" />
          </div>
 
-         <div class="flex space-x-2">
+         <div class="flex">
             <div class="flex flex-col">
                <label for="zipcode" class="text-sm font-semibold text-gray-600">Code Postal</label>
                <input type="text" id="zipcode" name="zipcode" :value="data.zipcode" class="mt-1 px-4 py-2 rounded-lg border focus:outline-none focus:border-blue-400" />
@@ -31,7 +31,7 @@
             </div>
          </div>
 
-         <div class="flex space-x-2">
+         <div class="flex">
             <div class="flex flex-col">
                <label for="phone" class="text-sm font-semibold text-gray-600">Téléphone</label>
                <input type="text" id="phone" name="phone" :value="data.phone" class="mt-1 px-4 py-2 rounded-lg border focus:outline-none focus:border-blue-400" />
