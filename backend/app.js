@@ -20,29 +20,33 @@ app.post('/api', async function (req, res) {
       const form = pdfDoc.getForm()
 
       // Fill the form fields
+      console.log('data.clientText', data.clientText)
       const clientTextBox = form.getTextField('clientTextBox')
-      clientTextBox.setText(data.clientText)
+      clientTextBox.setText(data.client)
       const clientTextBox2 = form.getTextField('clientTextBox2')
-      clientTextBox2.setText(data.clientText)
+      clientTextBox2.setText(data.client)
 
       const refTextBox = form.getTextField('refTextBox')
-      refTextBox.setText(data.refText)
+      refTextBox.setText(data.reference)
       const refTextBox2 = form.getTextField('refTextBox2')
-      refTextBox2.setText(data.refText)
+      refTextBox2.setText(data.reference)
 
       const addressTextBox = form.getTextField('addressTextBox')
-      addressTextBox.setText(data.addressText)
+      addressTextBox.setText(data.address)
 
       const postalCodeTextBox = form.getTextField('postalCodeTextBox')
-      postalCodeTextBox.setText(data.postalCodeText)
+      postalCodeTextBox.setText(data.zipcode)
 
       const cityTextBox = form.getTextField('cityTextBox')
-      cityTextBox.setText(data.cityText)
+      cityTextBox.setText(data.city)
       const cityTextBox2 = form.getTextField('cityTextBox2')
-      cityTextBox2.setText(data.cityText)
+      cityTextBox2.setText(data.city)
+
+      const phoneTextBox = form.getTextField('phoneTextBox')
+      phoneTextBox.setText(data.phone)
 
       const emailTextBox = form.getTextField('emailTextBox')
-      emailTextBox.setText(data.emailText)
+      emailTextBox.setText(data.email)
 
       const dateTextBox = form.getTextField('dateTextBox')
       dateTextBox.setText(format(new Date(), 'dd/MM/yyyy'))
