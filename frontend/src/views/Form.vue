@@ -51,7 +51,15 @@
 <script setup>
 import { ref } from 'vue'
 
-const data = ref({})
+const data = ref({
+   clientText: "MOON FRONTIERS",
+   refText: "JCB08723492",
+   addressText: "26, rue du Bac",
+   postalCodeText: "46340",
+   cityText: "Monstruc",
+   phoneText: "+33562345676",
+   emailText: "moonfrontiers@mail.fr",
+})
 
 async function onSubmit(ev) {
    console.log("onSubmit")
