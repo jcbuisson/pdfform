@@ -1,5 +1,5 @@
 <template>
-   <div class="max-w-md mx-auto">
+   <div class="max-w-md mx-auto p-4">
 
       <h1 class="p-8 text-4xl font-semibold text-indigo-500">JCB Location SAS</h1>
 
