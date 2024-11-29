@@ -55,7 +55,7 @@ app.post('/api', async function (req, res) {
       // await fs.writeFile('filled_form.pdf', filledPdfBytes)
 
       res.setHeader('Content-Type', 'application/pdf')
-      res.setHeader('Content-Disposition', 'inline; filename="example.pdf"')
+      // res.setHeader('Content-Disposition', 'inline; filename="example.pdf"')
 
       // Send the PDF content
       res.send(Buffer.from(filledPdfBytes))
