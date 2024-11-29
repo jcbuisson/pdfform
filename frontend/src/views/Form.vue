@@ -3,7 +3,7 @@
 
       <h1 class="p-8 text-4xl font-semibold text-indigo-500">JCB Location SAS</h1>
 
-      <form class="space-y-4" @submit.prevent="onSubmit">
+      <form class="space-y-4" action="/api" method="POST">
          <div class="flex flex-col">
             <label for="client" class="text-sm font-semibold text-gray-600">Client</label>
             <input type="text" id="client" name="client" v-model="data.clientText" class="mt-1 px-4 py-2 rounded-lg border focus:outline-none focus:border-blue-400" />
@@ -60,22 +60,4 @@ const data = ref({
    phoneText: "+33562345676",
    emailText: "moonfrontiers@mail.fr",
 })
-
-async function onSubmit(ev) {
-   console.log("onSubmit")
-   const response = await fetch('/api', {
-      method: 'POST',
-      headers: {
-         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data.value),
-   })
-
-   if (response.ok) {
-      const blob = await response.blob();
-      const pdfUrl = URL.createObjectURL(blob);
-      window.open(pdfUrl, '_blank');
-   } else {
-      alert('Error submitting form!')
-   }}
 </script>

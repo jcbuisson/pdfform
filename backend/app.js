@@ -9,6 +9,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.post('/api', async function (req, res) {
+   const data = req.body
+   console.log("API", data)
    try {
       // Load the PDF form
       const pdfBytes = await fs.readFile('./contrat-jcb.pdf')
@@ -19,28 +21,28 @@ app.post('/api', async function (req, res) {
 
       // Fill the form fields
       const clientTextBox = form.getTextField('clientTextBox')
-      clientTextBox.setText(req.body.clientText)
+      clientTextBox.setText(data.clientText)
       const clientTextBox2 = form.getTextField('clientTextBox2')
-      clientTextBox2.setText(req.body.clientText)
+      clientTextBox2.setText(data.clientText)
 
       const refTextBox = form.getTextField('refTextBox')
-      refTextBox.setText(req.body.refText)
+      refTextBox.setText(data.refText)
       const refTextBox2 = form.getTextField('refTextBox2')
-      refTextBox2.setText(req.body.refText)
+      refTextBox2.setText(data.refText)
 
       const addressTextBox = form.getTextField('addressTextBox')
-      addressTextBox.setText(req.body.addressText)
+      addressTextBox.setText(data.addressText)
 
       const postalCodeTextBox = form.getTextField('postalCodeTextBox')
-      postalCodeTextBox.setText(req.body.postalCodeText)
+      postalCodeTextBox.setText(data.postalCodeText)
 
       const cityTextBox = form.getTextField('cityTextBox')
-      cityTextBox.setText(req.body.cityText)
+      cityTextBox.setText(data.cityText)
       const cityTextBox2 = form.getTextField('cityTextBox2')
-      cityTextBox2.setText(req.body.cityText)
+      cityTextBox2.setText(data.cityText)
 
       const emailTextBox = form.getTextField('emailTextBox')
-      emailTextBox.setText(req.body.emailText)
+      emailTextBox.setText(data.emailText)
 
       const dateTextBox = form.getTextField('dateTextBox')
       dateTextBox.setText(format(new Date(), 'dd/MM/yyyy'))
@@ -53,7 +55,7 @@ app.post('/api', async function (req, res) {
       // await fs.writeFile('filled_form.pdf', filledPdfBytes)
 
       res.setHeader('Content-Type', 'application/pdf')
-      // res.setHeader('Content-Disposition', 'inline; filename="example.pdf"')
+      res.setHeader('Content-Disposition', 'inline; filename="contract.pdf"')
 
       // Send the PDF content
       res.send(Buffer.from(filledPdfBytes))
